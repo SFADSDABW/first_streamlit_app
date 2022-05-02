@@ -9,5 +9,10 @@ streamlit.text('More Coffee')
 streamlit.text('Crumpets')
 streamlit.text('Even More Coffee')
 
+# start importing data into Python and displaying it
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
+
+# Add in a multi-select widget
+streamlit.multiselect("Pick some fruits:",list(my_fruit_list.index))
+# Display it
 streamlit.dataframe(my_fruit_list)
