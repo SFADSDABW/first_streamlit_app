@@ -2,7 +2,7 @@ import streamlit
 
 streamlit.title('My First streamlit file in Python')
 
-Breakfast of Champion Coders
+streamlit.header('Breakfast of Champion Coders')
 Coffee
 More Coffee
 Crumpets
