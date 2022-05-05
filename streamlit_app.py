@@ -67,45 +67,8 @@ add_my_fruit = streamlit.text_input('What Fruit would you like to add?')
 if streamlit.button('Add Fruit to the List'):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   back_from_function = insert_row_snowflake(add_my_fruit)
-  streamlit.text(back_from_function)
-
-
-
-  
-  
-  
-  
-  
+  streamlit.text(back_from_function)  
   
 # don't run anything past here whilst we troubleshoot
-streamlit.stop()
+#streamlit.stop()
 
-# my_cur.execute("SELECT CURRENT_USER(),CURRENT_ACCOUNT(),CURRENT_REGION()")
-# streamlit.text("Hello from Snowflake:")
-
-#import requests
-#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-#streamlit.text(fruityvice_response.json())
-
-# take the json version of the response and normalize it
-#fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# output it to the screen as a table
-#streamlit.dataframe(fruityvice_normalized)
-
-#streamlit.write('The User entered',fruit_choice)
-
-#import snowflake.connector
-
-#my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-#my_cur = my_cnx.cursor()
-#my_cur.execute("SELECT * FROM PC_RIVERY_DB.public.fruit_load_list") 
-#my_data_rows = my_cur.fetchall()
-#streamlit.header("The fruit load list contains:")         
-#streamlit.dataframe(my_data_rows)
-
-# Get user to add a new fruit into the list
-#add_my_fruit = streamlit.text_input('What Fruit would you like to add?','Kiwi')
-#streamlit.write('Thanks for adding',add_my_fruit)
-
-#This will not work for now, but just go with it
-#my_cur.execute("insert into PC_RIVERY_DB.public.fruit_load_list values ('from streamlit')")
