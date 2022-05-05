@@ -43,28 +43,34 @@ try:
     
 except URLError as e:
     streamlit.error()
-#streamlit.write('The User entered',fruit_choice)
-
-#import requests
-#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-#streamlit.text(fruityvice_response.json())
-
-# take the json version of the response and normalize it
-#fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# output it to the screen as a table
-#streamlit.dataframe(fruityvice_normalized)
+    
+streamlit.header('The fruit list contains')    
+# Snowflake-related functions
+def get fruit_load_list();
+  with my_cnx.curser as my_cur:
+    my_cur.execute("SELECT * FROM PC_RIVERY_DB.public.fruit_load_list") 
+    return my_cur.fetchall()
+   
+# Add button to load fruit
+if streamlit.button('Get Fruit Load List'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_data_rows = get fruit_load_list()
+  streamlit.dataframe(my_data_rows)
 
 # don't run anything past here whilst we troubleshoot
 streamlit.stop()
 
+#streamlit.write('The User entered',fruit_choice)
+
 #import snowflake.connector
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * FROM PC_RIVERY_DB.public.fruit_load_list") 
-my_data_rows = my_cur.fetchall()
-streamlit.header("The fruit load list contains:")         
-streamlit.dataframe(my_data_rows)
+
+#my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+#my_cur = my_cnx.cursor()
+#my_cur.execute("SELECT * FROM PC_RIVERY_DB.public.fruit_load_list") 
+#my_data_rows = my_cur.fetchall()
+#streamlit.header("The fruit load list contains:")         
+#streamlit.dataframe(my_data_rows)
 
 # Get user to add a new fruit into the list
 add_my_fruit = streamlit.text_input('What Fruit would you like to add?','Kiwi')
@@ -76,3 +82,11 @@ my_cur.execute("insert into PC_RIVERY_DB.public.fruit_load_list values ('from st
 # my_cur.execute("SELECT CURRENT_USER(),CURRENT_ACCOUNT(),CURRENT_REGION()")
 # streamlit.text("Hello from Snowflake:")
 
+#import requests
+#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+#streamlit.text(fruityvice_response.json())
+
+# take the json version of the response and normalize it
+#fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# output it to the screen as a table
+#streamlit.dataframe(fruityvice_normalized)
