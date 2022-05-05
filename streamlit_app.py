@@ -78,7 +78,7 @@ if streamlit.button('Get Fruit Load List'):
   
   
 # don't run anything past here whilst we troubleshoot
-#streamlit.stop()
+streamlit.stop()
 
 # my_cur.execute("SELECT CURRENT_USER(),CURRENT_ACCOUNT(),CURRENT_REGION()")
 # streamlit.text("Hello from Snowflake:")
