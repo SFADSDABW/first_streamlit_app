@@ -43,8 +43,12 @@ my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")         
 streamlit.dataframe(my_data_rows)
 
+# Get user to add a new fruit into the list
 add_my_fruit = streamlit.text_input('What Fruit would you like to add?','Kiwi')
-streamlit.write('The User entered',add_my_fruit)
+streamlit.write('Thanks for adding',add_my_fruit)
+
+#This will not work for now, but just go with it
+my_cur.execute("INSERT INTO Fruit_load_list VALUES('from streamlit)")
 
 # my_cur.execute("SELECT CURRENT_USER(),CURRENT_ACCOUNT(),CURRENT_REGION()")
 # streamlit.text("Hello from Snowflake:")
