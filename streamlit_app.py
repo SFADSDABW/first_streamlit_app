@@ -48,7 +48,7 @@ add_my_fruit = streamlit.text_input('What Fruit would you like to add?','Kiwi')
 streamlit.write('Thanks for adding',add_my_fruit)
 
 #This will not work for now, but just go with it
-my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+my_cur.execute("insert into PC_RIVERY_DB.public.fruit_load_list values ('from streamlit')")
 
 # my_cur.execute("SELECT CURRENT_USER(),CURRENT_ACCOUNT(),CURRENT_REGION()")
 # streamlit.text("Hello from Snowflake:")
